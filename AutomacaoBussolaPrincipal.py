@@ -16,33 +16,33 @@ import os
 options = webdriver.ChromeOptions()
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-# 1️⃣ Acessar a página de login
+# 1️ Acessar a página de login
 login_url = "https://radar.farmarcas.com.br/authentication/"  # Substitua pela URL real
 driver.get(login_url)
 
-# 2️⃣ Esperar a página carregar
+# 2️ Esperar a página carregar
 time.sleep(3)
 
-# 3️⃣ Encontrar os campos de login e preencher
+# 3️ Encontrar os campos de login e preencher
 usuario = driver.find_element(By.XPATH, "//input[@class='form-input-text ng-untouched ng-pristine ng-valid' and @type='text']") # Ajuste conforme necessário
 senha = driver.find_element(By.XPATH, "//input[@class='form-input-text ng-untouched ng-pristine ng-valid' and @type='password']")
 
 usuario.send_keys("29842944832")  # Substitua pelo seu usuário
 senha.send_keys("Max1popu!ar")     # Substitua pela sua senha
 
-# 4️⃣ Enviar o formulário (pressionand o Enter)
+# 4️ Enviar o formulário (pressionand o Enter)
 senha.send_keys(Keys.RETURN)
 
-# 5️⃣ Aguardar login ser processado
+# 5️ Aguardar login ser processado
 time.sleep(5)
 
-# 6️⃣ Verificar se o login foi bem-sucedido
+# 6️ Verificar se o login foi bem-sucedido
 if "dashboard" in driver.current_url:
-    print("✅ Login bem-sucedido!")
+    print("Login bem-sucedido!")
 else:
-    print("❌ Falha no login!")
+    print("Falha no login!")
 
-# 7️⃣ Capturar cookies de login
+# 7️ Capturar cookies de login
 
 cookies = driver.get_cookies()
 time.sleep(2)
@@ -151,11 +151,11 @@ def baixarPorLoja():
                         time.sleep(1)
 
                 os.rename(caminhoAntigo, caminhoNovo)
-                print(f"✅ Arquivo renomeado para: {l}.xlsx")
+                print(f"Arquivo renomeado para: {l}.xlsx")
             except Exception as e:
-                print(f"❌ Erro ao renomear {l}: {e}")
+                print(f"Erro ao renomear {l}: {e}")
         else:
-            print(f"⚠️ Arquivo {caminhoAntigo} não encontrado para {l}")
+            print(f"Arquivo {caminhoAntigo} não encontrado para {l}")
 
         time.sleep(15)
 
@@ -163,5 +163,5 @@ def baixarPorLoja():
 
 baixarPorLoja()
 
-# # 🔟 Fechar o navegador
+# Fechar o navegador
 driver.quit()

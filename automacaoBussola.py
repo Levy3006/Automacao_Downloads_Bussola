@@ -22,7 +22,7 @@ def esperar_imagem(nome_arquivo, timeout=60, confidence=0.90):
     while time.time() < fim:
         pos = pyautogui.locateCenterOnScreen(nome_arquivo, confidence=confidence)
         if pos:
-            print(f"✅ {nome_arquivo} encontrado.")
+            print(f"{nome_arquivo} encontrado.")
             return pos
         time.sleep(1)
     print(f"❌ Timeout: {nome_arquivo} não encontrado.")
@@ -40,13 +40,13 @@ def login(driver, usuario, senha):
         pass_input.send_keys(Keys.RETURN)
         time.sleep(5)
         if "dashboard" in driver.current_url:
-            print("✅ Login realizado com sucesso.")
+            print("Login realizado com sucesso.")
             return True
         else:
-            print("❌ Falha no login.")
+            print("Falha no login.")
             return False
     except Exception as e:
-        print("❌ Erro ao tentar logar:", e)
+        print("Erro ao logar:", e)
         return False
 
 # Pressionar várias vezes TAB
@@ -69,7 +69,7 @@ def principal():
         time.sleep(4)
         driver.find_element(By.XPATH, "//span[text()=' Bússola']").click()
     except Exception as e:
-        print("❌ Erro ao navegar para Bússola:", e)
+        print("Erro ao navegar para Bússola:", e)
         driver.quit()
         return
 
@@ -122,9 +122,9 @@ def principal():
     pyautogui.press("escape")
 
     if esperar_imagem("exportacaoConcluida.png", timeout=100, confidence=0.8):
-        print("✅ Exportação concluída com sucesso.")
+        print("Exportação concluída com sucesso.")
     else:
-        print("❌ Exportação não foi concluída.")
+        print("Exportação não foi concluída.")
 
     driver.quit()
 
